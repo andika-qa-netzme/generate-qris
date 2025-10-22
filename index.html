@@ -43,21 +43,26 @@
         <div class="popup-content">
             <h2>Skenario untuk SW Jalin</h2>
             <p>* scenario negatif:</p>
-                     <p>* 68XX = payment status suspend</p>
-                     <p>* 13XX = payment status RC13</p>
-                     <p>* 74XX = payment status RC74 error timeout</p>
-                     <p>* 55XX = payment status RC74 error timeout</p>
-                     <p>* 99XX = timeout</p>
+                     <p>* Amount 68XX = payment status suspend</p>
+                     <p>* Amount 13XX = payment status RC13</p>
+                     <p>* Amount 74XX = payment status RC74 error timeout</p>
+                     <p>* Amount 55XX = payment status RC74 error timeout</p>
+                     <p>* Amount 99XX = timeout</p>
                        <p> /**</p>
                         <p> * scenario abnormal : untuk kelanjutan 68XX case cekstatus</p>
-						            <p> * XX00 = check status sukses 00 (sukses / berhasil)</p>
-                        <p> * XX98 = check status A01 (gagal)</p>
-                        <p> * XX68 = check status suspend (kalau di jalin gagal)</p>
-                        <p> * XX13 = check status RC13 (kalau di jalin gagal)</p>
-                         <p>* XX74 = check status RC74 error timeout (kalau di jalin gagal)</p>
-                         <p>* XX55 = check status RC74 error timeout (kalau di jalin gagal)</p>
-                         <p>* XX99 = timeout (kalau dijalin pending)</p>
+						            <p> * Amount XX00 = check status sukses 00 (sukses / berhasil)</p>
+                        <p> * Amount XX98 = check status A01 (gagal)</p>
+                        <p> * Amount XX68 = check status suspend (kalau di jalin gagal)</p>
+                        <p> * Amount XX13 = check status RC13 (kalau di jalin gagal)</p>
+                         <p>* Amount XX74 = check status RC74 error timeout (kalau di jalin gagal)</p>
+                         <p>* Amount XX55 = check status RC74 error timeout (kalau di jalin gagal)</p>
+                         <p>* Amount XX99 = timeout (kalau dijalin pending)</p>
                         <p> */</p>
+            <h2>Skenario untuk SW Artajasa</h2>
+            <p>* scenario negatif:</p>
+                     <p>* amount 50990 = payment status suspend</p>
+                     <p>* amount 50550 = payment status RC96</p>
+                        <p> *Noted : case ini URLnya harus di arahkan ke quickmock</p>
             <!-- Tombol untuk menutup popup -->
             <button id="closePopupBtn">Tutup</button>
         </div>
