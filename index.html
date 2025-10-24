@@ -89,7 +89,89 @@
   <button onclick="generatetag51ON()">Generate QRIS tag 51 ON | 26-45 OFF</button>
   <button onclick="generatetag26ONLY()">Generate QRIS tag 51 OFF | 26-45 ON</button>
   <button onclick="downloadPDF()">Download PDF</button>
+  <br><br>
+  <button id="btnSetA">Qris CHINA</button>
+  <div class="popup" id="popupA">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup('popupA')">Tutup</button>
+      <h2>Daftar Gambar</h2>
+      <div class="image-list">
+        <!-- Gambar diambil dari folder 'images' -->
+        <div class="image-item"></div>
+        <img src="images/qris_china/qr_statik_china_alipay.png">
+        <div class="caption">QRIS Statis CHINA</div><br>
+        <div class="image-item"></div>
+        <img src="images/qris_china/qr_dinamis_china_alipay.png">
+        <div class="caption">QRIS Dinamis CHINA</div><br>
+      </div>
+    </div>
+  </div>
+  <button id="btnSetB">Qris Jepang</button>
+  <div class="popup" id="popupB">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup('popupB')">Tutup</button>
+      <h2>Daftar Gambar</h2>
+      <div class="image-list">
+        <!-- Gambar diambil dari folder 'images' -->
+        <div class="image-item"></div>
+        <img src="images/qris_jepang/qr_statis_jepang_tag64_on.png">
+        <div class="caption">QRIS Statis JEPANG Tag 64 ON</div><br>
+        <div class="image-item"></div>
+        <img src="images/qris_jepang/qr_statis_jepang_tag64_off.png">
+        <div class="caption">QRIS Statis JEPANG Tag 64 OFF</div><br>
+        <div class="image-item"></div>
+        <img src="images/qris_jepang/qr_dinamis_jepang_tag64_off.png">
+        <div class="caption">QRIS Dinamis JEPANG</div><br>
+      </div>
+    </div>
+  </div>
+  <button id="btnSetC">Qris Korea</button>
+  <div class="popup" id="popupC">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup('popupC')">Tutup</button>
+      <h2>Daftar Gambar</h2>
+      <div class="image-list">
+        <!-- Gambar diambil dari folder 'images' -->
+        <div class="image-item"></div>
+        <img src="images/qris_korea/qr _static_korea_2.png">
+        <div class="caption">QRIS Statis KOREA</div><br>
+        <div class="image-item"></div>
+        <img src="images/qris_korea/qr_dinamis_korea.png">
+        <div class="caption">QRIS Dinamis KOREA</div><br>
+      </div>
+    </div>
+  </div>
+  <button id="btnSetD">Qris Singapura</button>
+  <div class="popup" id="popupD">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup('popupD')">Tutup</button>
+      <h2>Daftar Gambar</h2>
+      <div class="image-list">
+        <!-- Gambar diambil dari folder 'images' -->
+        <div class="image-item"></div>
+        <img src="images/qris_singapura/QR_static_singapura.png">
+        <div class="caption">QRIS Statis SINGAPURA</div><br>
+        <div class="image-item"></div>
+        <img src="images/qris_singapura/QR_dinamic_singapura.png">
+        <div class="caption">QRIS Dinamis SINGAPURA</div><br>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Fungsi untuk buka popup tertentu
+    function openPopup(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
 
+    // Klik tombol membuka popup
+    document.getElementById('btnSetA').onclick = () => openPopup('popupA');
+    document.getElementById('btnSetB').onclick = () => openPopup('popupB');
+    document.getElementById('btnSetC').onclick = () => openPopup('popupC');
+    document.getElementById('btnSetD').onclick = () => openPopup('popupD');
+  </script>
   <br><br>
   <canvas id="qrisCanvas"></canvas>
   <p><b>Payload:</b></p>
