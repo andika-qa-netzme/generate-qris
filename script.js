@@ -179,7 +179,7 @@
       formatTLV('26',
         formatTLV('00', 'ID.CO.QRIS.WWW') +
         formatTLV('01', pan) +
-        formatTLV('02', 'BIO12345678915') +
+        formatTLV('02', 'ABO12345678915') +
         formatTLV('03', mcc)
       ),
       formatTLV('51', // Tambahan Tag 51
