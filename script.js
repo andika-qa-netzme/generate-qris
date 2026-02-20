@@ -146,6 +146,64 @@
   return payload + crc;
   }
 
+  function generatePayloadTag62OFF() {
+    const pan = document.getElementById('pan').value.trim();
+    const name = document.getElementById('name').value.trim().toUpperCase();
+    const city = document.getElementById('city').value.trim().toUpperCase();
+    const postalcode = document.getElementById('postalcode').value.trim().toUpperCase();
+    const amount = document.getElementById('amount').value.trim();
+    const isDynamic = amount !== '';
+    const mcc = document.getElementById('mcc').value;
+    // FEE
+    const feeActive = document.getElementById('feeActive').value === 'yes';
+    const feeType = document.getElementById('feeType').value;
+    const feeValue = document.getElementById('feeValue').value.trim();
+
+    let tag55 = '';
+    let tag56 = '';
+    let tag57 = '';
+
+    if (feeActive) {
+      tag55 = formatTLV('55', feeType);
+
+      if (feeType === '02' && feeValue !== '') {
+        tag56 = formatTLV('56', feeValue); // Fixed amount
+      } else if (feeType === '03' && feeValue !== '') {
+        tag57 = formatTLV('57', feeValue); // Percentage
+      }
+    }
+
+    const payload = [
+      formatTLV('00', '01'),
+      formatTLV('01', isDynamic ? '12' : '11'),
+      formatTLV('26',
+        formatTLV('00', 'ID.CO.QRIS.WWW') +
+        formatTLV('01', pan) +
+        formatTLV('02', 'BIO12345678915') +
+        formatTLV('03', mcc)
+      ),
+      formatTLV('51', // Tambahan Tag 51
+        formatTLV('00', 'ID.CO.QRIS.WWW') +  // Ganti dengan info relevan jika ada
+        formatTLV('02', 'ID1022208552615') +  // Ganti dengan info relevan jika ada
+        formatTLV('03', mcc)  // Ganti dengan info relevan jika ada
+      ),
+      formatTLV('52', '5821'),
+      formatTLV('53', '360'),
+      amount ? formatTLV('54', amount) : '',
+      tag55,
+      tag56,
+      tag57,
+      formatTLV('58', 'ID'),
+      formatTLV('59', name.slice(0, 25)),
+      formatTLV('60', city.slice(0, 15)),
+      formatTLV('61', postalcode.slice(0, 15)),
+      '6304'
+    ].join('');
+
+    const crc = calculateCRC(payload);
+    return payload + crc;
+  }
+
     function generate() {
       const payload = generatePayload();
       currentPayload = payload;
@@ -168,6 +226,16 @@
 
     function generatetag26ONLY() {
       const payload = generatePayloadTag26Only();
+      currentPayload = payload;
+      document.getElementById('payload').value = payload;
+
+      QRCode.toCanvas(document.getElementById('qrisCanvas'), payload, function (error) {
+        if (error) console.error(error);
+      });
+    }
+
+    function generateTag62OFF() {
+      const payload = generatePayloadTag62OFF();
       currentPayload = payload;
       document.getElementById('payload').value = payload;
 
